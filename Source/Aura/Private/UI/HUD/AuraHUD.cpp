@@ -39,6 +39,9 @@ void AAuraHUD::InitOverlap(APlayerController* PC, APlayerState* PS, UAbilitySyst
 
 	// 3. 调用用户界面对象 OverlayWidget 的 SetWidgetController 函数，将用户界面控制对象 WidgetController 和用户界面 OverlayWidget 进行关联
 	OverlayWidget->SetWidgetController(WidgetController);
+
+	// 4. 调用控制器对象的广播事件，用于初始化属性值（注意，此时我们不知道有哪些对象和这个 多播委托 绑定）
+	WidgetController->BroadcastInitialValues();
 	
 	Widget->AddToViewport();
 }

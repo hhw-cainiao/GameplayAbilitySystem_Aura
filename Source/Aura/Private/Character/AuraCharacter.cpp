@@ -38,7 +38,7 @@ void AAuraCharacter::OnRep_PlayerState()
 	// Init ability actor info for the Client
 	InitAbilityActorInfo();
 }
-
+ 
 void AAuraCharacter::InitAbilityActorInfo()
 {
 	AAuraPlayerState* AuraPlayerState =  GetPlayerState<AAuraPlayerState>();
