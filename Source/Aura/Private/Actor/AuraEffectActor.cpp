@@ -41,7 +41,6 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC);
 	}
 	
-	
 }
 
 void AAuraEffectActor::OnOverlap(AActor* TargetActor)
