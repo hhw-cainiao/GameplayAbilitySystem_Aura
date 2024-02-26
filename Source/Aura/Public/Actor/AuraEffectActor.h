@@ -92,6 +92,9 @@ protected:
 	
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Applied Effects")
+	float ActorLevel = 1.f;
+
 	/**
 	 * Side Quest：制作一个功能，一个Actor可以应用一系列的 GE
 	 * 思路：
