@@ -47,5 +47,7 @@ void AAuraHUD::InitOverlap(APlayerController* PC, APlayerState* PS, UAbilitySyst
 	WidgetController->BroadcastInitialValues();
 	
 	Widget->AddToViewport();
+
+	
 }
 
