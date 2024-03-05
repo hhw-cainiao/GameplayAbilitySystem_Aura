@@ -14,18 +14,12 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 
 		// 调用绑定，将AbilitySystemComponent的委托和自身函数绑定起来。这样AttributeValue改变时，就可以通知到WidgetController
 		OverlayWidgetController->BindCallbacksToDependencies();
-
-		return OverlayWidgetController;
 	}
 	return OverlayWidgetController;
 }
 
 /**
  * 这个函数在 AAuraCharacter 类的 InitAbilityActorInfo 函数处调用，因为在这个函数内部初始化了 InitOverlap 所需的参数信息
- * @param PC 
- * @param PS 
- * @param ASC 
- * @param AS 
  */
 void AAuraHUD::InitOverlap(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
 {
@@ -47,7 +41,19 @@ void AAuraHUD::InitOverlap(APlayerController* PC, APlayerState* PS, UAbilitySyst
 	WidgetController->BroadcastInitialValues();
 	
 	Widget->AddToViewport();
+}
 
-	
+UAttributeMenuWidgetController* AAuraHUD::GetAttributeMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+	// 单例，全局只有一个 UAttributeMenuWidgetController 类对象，如果已经存在则直接返回，如果不存在则根据结构体参数进行创建
+	if (AttributeMenuWidgetController == nullptr)
+	{
+		AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
+		AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
+
+		// 调用绑定，将 AbilitySystemComponent 的委托和自身函数绑定起来。这样 AttributeValue 改变时，就可以通知到WidgetController
+		AttributeMenuWidgetController->BindCallbacksToDependencies();
+	}
+	return AttributeMenuWidgetController;
 }
 
